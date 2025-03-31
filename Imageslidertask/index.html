@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #slider-container {
+            max-width: 500px;
+            margin: auto;
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .btn {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Image Slider</h2>
+    <div id="slider-container">
+        <img id="slider" src="" alt="Image Slider">
+        <br>
+        <button class="btn" onclick="prevImage()">Previous</button>
+        <button class="btn" onclick="nextImage()">Next</button>
+    </div>
+
+    <script>
+        // Array of image URLs
+        const images = [
+            "https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=",
+            "https://media.istockphoto.com/id/1403500817/photo/the-craggies-in-the-blue-ridge-mountains.jpg?s=612x612&w=0&k=20&c=N-pGA8OClRVDzRfj_9AqANnOaDS3devZWwrQNwZuDSk=",
+            "https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=1024x1024&w=0&k=20&c=z8_rWaI8x4zApNEEG9DnWlGXyDIXe-OmsAyQ5fGPVV8=",
+            "https://img.freepik.com/premium-photo/wide-angle-shot-single-tree-growing-clouded-sky-sunset-surrounded-by-grass_181624-22807.jpg?semt=ais_hybrid"
+        ];
+
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+
+        // Function to update image
+        function updateImage() {
+            slider.src = images[currentIndex];
+        }
+
+        // Function to show next image
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+
+        // Function to show previous image
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+
+        // Initialize slider with first image
+        updateImage();
+    </script>
+
+</body>
+</html>
